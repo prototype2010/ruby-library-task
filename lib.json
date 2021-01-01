@@ -1,0 +1,142 @@
+{
+  "authors": [
+    {
+      "id": 1,
+      "name": "Boris",
+      "biography": "The Blade"
+    },
+    {
+      "id": "bc94d77e-090c-4dd1-b21b-e5f713db8741",
+      "name": "Anatoly",
+      "biography": "Unknown"
+    },
+    {
+      "id": "39ced59d-5c61-4142-99ee-0ccd21add496",
+      "name": "Marosei",
+      "biography": null
+    },
+    {
+      "id": "289299a1-361a-4389-bd67-2ef8c0fd565d",
+      "name": "Lermontov",
+      "biography": "asdasdas"
+    },
+    {
+      "id": "73fab9ce-bab2-44b7-bc81-0fcbf58ea577",
+      "name": "Lermontov",
+      "biography": null
+    }
+  ],
+  "readers": [
+    {
+      "id": 2,
+      "name": "Reader1",
+      "email": "Cadabra222@gmail.com",
+      "city": "Sumy",
+      "street": "AMENUKA 17",
+      "house": 245
+    },
+    {
+      "id": 3,
+      "name": "Reader2",
+      "email": "Cadabr333333333@gmail.com",
+      "city": "Sumy",
+      "street": "AMENUKA 17",
+      "house": 245
+    },
+    {
+      "id": 1,
+      "name": "Reader1",
+      "email": "Cadabr3311111@gmail.com",
+      "city": "Sumy",
+      "street": "AMENUKA 1171",
+      "house": 344
+    },
+    {
+      "id": "ff128892-7dbe-43c1-b6c1-1aec592e7975",
+      "name": "good reader",
+      "email": "mmm@mail.ru",
+      "city": "SUmy",
+      "street": "Berezovaya",
+      "house": 17
+    }
+  ],
+  "books": [
+    {
+      "id": 1,
+      "author_id": 1,
+      "title": "Abrakadabra"
+    },
+    {
+      "id": 2,
+      "author_id": "289299a1-361a-4389-bd67-2ef8c0fd565d",
+      "title": "Good year"
+    },
+    {
+      "id": "da66a5d0-d0e6-48f1-95ab-70a2fe3d1069",
+      "author_id": "73fab9ce-bab2-44b7-bc81-0fcbf58ea577",
+      "title": "Good year"
+    }
+  ],
+  "orders": [
+    {
+      "id": "asdasdsd-9603-48a1-826e-02223fa1d51",
+      "book_id": 1,
+      "reader_id": 1,
+      "date": "2020-12-28"
+    },
+    {
+      "id": "a4834087-9603-48a1-826e-044403fa1d51",
+      "book_id": 1,
+      "reader_id": 1,
+      "date": "2020-12-28"
+    },
+    {
+      "id": "a48asdasd-9603-48a1-826e-0a6d4441d51",
+      "book_id": 2,
+      "reader_id": 1,
+      "date": "2020-12-28"
+    },
+    {
+      "id": "a4834087-9603-48a1-826e-0aaaaaaa451",
+      "book_id": 1,
+      "reader_id": 2,
+      "date": "2020-12-28"
+    },
+    {
+      "id": "a4834087-9603-48a1-812312312",
+      "book_id": 2,
+      "reader_id": 2,
+      "date": "2020-12-28"
+    },
+    {
+      "id": "a4834087-9603-48a1-826e-0a6dasd51",
+      "book_id": 2,
+      "reader_id": 2,
+      "date": "2020-12-28"
+    },
+    {
+      "id": "a4834087-9603-48a1-826e-0a5asdasd51",
+      "book_id": 1,
+      "reader_id": 1,
+      "date": "2020-12-28"
+    },
+    {
+      "id": "a4834087-9603-48a1-826e-0a6d03fa1d51",
+      "book_id": 1,
+      "reader_id": 3,
+      "date": "2020-12-28"
+    },
+    {
+      "id": "f475f41d-50ff-4d73-9b75-8ce663831a61",
+      "book_id": "da66a5d0-d0e6-48f1-95ab-70a2fe3d1069",
+      "reader_id": "ff128892-7dbe-43c1-b6c1-1aec592e7975",
+      "date": "-4712-01-01"
+    },
+    {
+      "id": "7feb556f-e18f-449a-b66d-f6099d11aeec",
+      "book_id": "da66a5d0-d0e6-48f1-95ab-70a2fe3d1069",
+      "reader_id": "ff128892-7dbe-43c1-b6c1-1aec592e7975",
+      "date": "-4712-01-01"
+    }
+  ]
+}
