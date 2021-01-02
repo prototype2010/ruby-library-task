@@ -4,7 +4,8 @@ require_relative './dependency_resolver/dependency_resolver'
 require_relative './lib_loader/lib_loader'
 require_relative './dependency_resolver/config'
 require_relative './entities/library'
-require 'date'
+require_relative './fake_data_generator/fake_data_generator'
+require_relative './fake_data_generator/config'
 
 json_file = LibLoader.load
 
@@ -16,12 +17,22 @@ library_content = DependencyResolver.resolve(
 
 lib = Library.new(library_content)
 
-good_author = AUTHORS_FACTORY.create(name: 'Lermontov')
-book = BOOKS_FACTORY.create(title: 'Good year', author: good_author)
-reader = READERS_FACTORY.create(name: 'good reader', email: 'mmm@mail.ru', city: 'SUmy', street: 'Berezovaya', house: 17)
-order = ORDERS_FACTORY.create(book: book, reader: reader, date: Date.new)
+fake_data_generator = FakeDataGenerator.new(FAKE_FACTORIES_CONFIG)
 
-lib.add(order) # other entities will be included automatically
+author = fake_data_generator.create(:author) # partially fake
+author2 = fake_data_generator.create(:author, biography: 'Born in 1899') # completely fake
+book = fake_data_generator.create(:book) # completely fake
+book2 = fake_data_generator.create(:book, { author: author }) # partially fake
+reader = fake_data_generator.create(:reader, { city: 'Sumy' }) # partially fake
+reader2 = fake_data_generator.create(:reader) # completely fake
+order = fake_data_generator.create(:order) # completely fake
+order2 = fake_data_generator.create(:order, { book: book }) # partially fake
+
+many_orders = fake_data_generator.create_many(:order)
+
+all = [author, author2, book, book2, reader, reader2, order, order2] + many_orders
+
+lib.add(all) # other entities will be included automatically
 
 lib.top_readers(3).inspect
 lib.top_books(3).inspect

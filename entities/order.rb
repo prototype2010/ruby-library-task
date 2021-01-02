@@ -25,7 +25,7 @@ class Order < Entity
         if date.is_a? String
           Date.parse(date)
         else
-          Date.new
+          Date.today
         end
       end
     }

@@ -52,7 +52,15 @@ class Library < Entity
     super
   end
 
-  def add(entity)
+  def add(entity_or_array)
+    entity_or_array.is_a?(Array) ? add_array(entity_or_array) : add_one(entity_or_array)
+  end
+
+  def add_array(entities_array)
+    entities_array.each { |entity| add_one(entity) }
+  end
+
+  def add_one(entity)
     method_name = "add_#{entity.class.to_s.downcase}".to_sym
 
     return send(method_name, entity) if self.class.protected_method_defined? method_name
