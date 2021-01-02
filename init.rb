@@ -17,7 +17,7 @@ library_content = DependencyResolver.resolve(
 
 lib = Library.new(library_content)
 
-fake_data_generator = FakeDataGenerator.new(FAKE_FACTORIES_CONFIG)
+fake_data_generator = FakeDataGenerator.new(FACTORIES_CONFIG)
 
 author = fake_data_generator.create(:author) # partially fake
 author2 = fake_data_generator.create(:author, biography: 'Born in 1899') # completely fake
