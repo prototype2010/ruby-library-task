@@ -45,7 +45,7 @@ class FakeDataGenerator
       email: Faker::Internet.email,
       city: Faker::Address.state,
       street: Faker::Address.street_address,
-      house: Faker::Number.rand.round
+      house: Faker::Number.number
     }
 
     @factories[:reader].create(fake_params.merge(override_params))
