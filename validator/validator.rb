@@ -8,10 +8,10 @@ module Validator
   def validate_one(init_hash, prop_name, validation_rule)
     create_before_validation(init_hash, prop_name, validation_rule)
 
-    nullable = validation_rule[:nullable]
+    is_nullable = validation_rule[:nullable]
     current_type = init_hash[prop_name]
 
-    return if nullable && current_type.nil?
+    return if is_nullable && current_type.nil?
 
     check_type(init_hash, prop_name, validation_rule)
     validate_nested(init_hash, prop_name, validation_rule)

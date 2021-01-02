@@ -22,10 +22,9 @@ class DependencyResolver
     init_params
       .to_a
       .each_with_object({}) do |entry, resolved_deps|
-      key, entity_id = entry
-      sym_key = key
+      sym_key, entity_id = entry
 
-      next unless factories_hash.key?(key)
+      next unless factories_hash.key?(sym_key)
 
       required_factory = factories_hash[sym_key][:factory]
       initialize_prop = factories_hash[sym_key][:property_name]

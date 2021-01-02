@@ -137,6 +137,36 @@
       "book_id": "da66a5d0-d0e6-48f1-95ab-70a2fe3d1069",
       "reader_id": "ff128892-7dbe-43c1-b6c1-1aec592e7975",
       "date": "-4712-01-01"
+    },
+    {
+      "id": "76d82da8-3ebc-43b2-b7d8-9b1a33118f8a",
+      "book_id": "da66a5d0-d0e6-48f1-95ab-70a2fe3d1069",
+      "reader_id": "ff128892-7dbe-43c1-b6c1-1aec592e7975",
+      "date": "-4712-01-01"
+    },
+    {
+      "id": "a79f36e7-b35b-49f2-928c-bca6901cac60",
+      "book_id": "da66a5d0-d0e6-48f1-95ab-70a2fe3d1069",
+      "reader_id": "ff128892-7dbe-43c1-b6c1-1aec592e7975",
+      "date": "-4712-01-01"
+    },
+    {
+      "id": "904e93bf-f61e-472d-8cde-07e0f085bff2",
+      "book_id": "da66a5d0-d0e6-48f1-95ab-70a2fe3d1069",
+      "reader_id": "ff128892-7dbe-43c1-b6c1-1aec592e7975",
+      "date": "-4712-01-01"
+    },
+    {
+      "id": "488e2ab8-cb59-4975-ad4b-15843f300078",
+      "book_id": "da66a5d0-d0e6-48f1-95ab-70a2fe3d1069",
+      "reader_id": "ff128892-7dbe-43c1-b6c1-1aec592e7975",
+      "date": "-4712-01-01"
+    },
+    {
+      "id": "5ce29b14-ce7e-445f-86aa-226ab380c158",
+      "book_id": "da66a5d0-d0e6-48f1-95ab-70a2fe3d1069",
+      "reader_id": "ff128892-7dbe-43c1-b6c1-1aec592e7975",
+      "date": "-4712-01-01"
     }
   ]
 }
