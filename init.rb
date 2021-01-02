@@ -28,7 +28,7 @@ reader2 = fake_data_generator.create(:reader) # completely fake
 order = fake_data_generator.create(:order) # completely fake
 order2 = fake_data_generator.create(:order, { book: book }) # partially fake
 
-many_orders = fake_data_generator.create_many(:order)
+many_orders = fake_data_generator.create_many(:order, 25) # create many example
 
 all = [author, author2, book, book2, reader, reader2, order, order2] + many_orders
 
