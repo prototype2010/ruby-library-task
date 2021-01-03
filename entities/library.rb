@@ -4,9 +4,11 @@ require_relative 'book'
 require_relative 'author'
 require_relative 'reader'
 require_relative '../statistics/statistics'
+require_relative '../lib_loader/lib_loader'
 
 class Library < Entity
   include Statistics
+  include LibLoader
 
   VALIDATION_RULES = {
     books: {
@@ -41,7 +43,9 @@ class Library < Entity
 
   attr_reader :books, :authors, :readers, :orders
 
-  def initialize(init_hash)
+  def initialize
+    init_hash = load
+
     validate(init_hash, VALIDATION_RULES)
 
     @books = init_hash[:books]
@@ -49,7 +53,7 @@ class Library < Entity
     @readers = init_hash[:readers]
     @orders = init_hash[:orders]
 
-    super
+    super init_hash[:id]
   end
 
   def add(entity_or_array)

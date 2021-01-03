@@ -1,27 +1,28 @@
 require 'json'
+require_relative '../dependency_resolver/dependency_resolver'
+require_relative '../dependency_resolver/config'
 
-class LibLoader
-  DEFAULT_FILENAME = './lib.json'.freeze
+module LibLoader
+  DEFAULT_FILENAME = File.expand_path('./lib.json')
 
-  def self.load(file_name = DEFAULT_FILENAME)
+  def load(file_name = DEFAULT_FILENAME)
     json = File.read(file_name)
-    parse_json_file(json)
+    parsed = parse_json_file(json)
+
+    DependencyResolver.resolve(DEPENDENCY_RESOLVE_ORDER, DEPENDENCY_RESOLVE_CONFIG, parsed)
   rescue StandardError => e
     puts "Unable to get lib content from #{file_name}. Empty library will be instantiated"
-    puts "Original error text: #{e.message}"
+    puts "Original error text: #{e.message}, #{e.backtrace}"
     {
-      authors: [],
-      books: [],
-      orders: [],
-      readers: []
+      authors: [], books: [], orders: [], readers: []
     }
   end
 
-  def self.parse_json_file(lib_content)
+  def parse_json_file(lib_content)
     JSON.parse(lib_content, { object_class: Hash, symbolize_names: true })
   end
 
-  def self.write(lib_content, file_name = DEFAULT_FILENAME)
-    File.write(file_name, lib_content)
+  def write(file_name = DEFAULT_FILENAME)
+    File.write(file_name, to_json)
   end
 end

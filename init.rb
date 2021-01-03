@@ -7,15 +7,7 @@ require_relative './entities/library'
 require_relative './fake_data_generator/fake_data_generator'
 require_relative './fake_data_generator/config'
 
-json_file = LibLoader.load
-
-library_content = DependencyResolver.resolve(
-  DEPENDENCY_RESOLVE_ORDER,
-  DEPENDENCY_RESOLVE_CONFIG,
-  json_file
-)
-
-lib = Library.new(library_content)
+lib = Library.new
 
 fake_data_generator = FakeDataGenerator.new(FACTORIES_CONFIG)
 
@@ -38,4 +30,4 @@ lib.top_readers(3).inspect
 lib.top_books(3).inspect
 lib.top_readers_of_top_books(3, 2)
 
-LibLoader.write(lib.to_json)
+lib.write
