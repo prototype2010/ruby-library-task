@@ -1,8 +1,4 @@
-require 'json'
 require_relative 'factories/factories'
-require_relative './dependency_resolver/dependency_resolver'
-require_relative './lib_loader/lib_loader'
-require_relative './dependency_resolver/config'
 require_relative './entities/library'
 require_relative './fake_data_generator/fake_data_generator'
 require_relative './fake_data_generator/config'
