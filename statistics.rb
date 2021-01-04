@@ -2,8 +2,7 @@ require_relative 'factories/factories'
 require_relative './entities/library'
 require_relative './fake_data_generator/fake_data_generator'
 require_relative './fake_data_generator/config'
-
-
+require_relative './statistics/statistics'
 
 def pretty_param_type(param_type)
   case param_type
@@ -21,7 +20,6 @@ def pretty_method_name(method_name)
           .capitalize}`"
 end
 
-
 lib = Library.new
 
 available_methods = lib
@@ -37,9 +35,9 @@ option_number = gets.chop.to_i
 
 puts
 
-raise "No such option #{option_number}" unless available_methods[option_number - 1]
-
 real_option_number = option_number - 1
+
+raise "No such option #{option_number}" unless available_methods[real_option_number]
 
 method_symbol = available_methods[real_option_number]
 chosen_method = lib.method(method_symbol)
@@ -47,7 +45,13 @@ method_params = chosen_method
                 .parameters
                 .map do |param_type, param_name|
   print "Please input parameter #{pretty_method_name(param_name)} #{pretty_param_type(param_type)}: "
-  gets.chop.to_i
+  input_value = gets.chop.to_i
+
+  if input_value.positive?
+    input_value
+  else
+    Statistics::DEFAULT_VALUES[method_symbol][param_name]
+  end
 end
 
 puts chosen_method.call(*method_params)

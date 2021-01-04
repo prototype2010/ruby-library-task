@@ -1,22 +1,40 @@
 module Statistics
-  def top_readers(number = 1)
+  # used for interactive statistics query, required because of reflection limitation - there is no way to get
+  # default value of method parameter or call method with argument to make method use default value
+  DEFAULT_VALUES = {
+    top_readers: {
+      top_readers_number: 1
+    },
+    top_books: {
+      top_books_number: 1
+    },
+    top_readers_of_top_books: {
+      top_readers_quantity: 3,
+      top_books_quantity: 3
+    }
+  }.freeze
+
+  def top_readers(top_readers_number = DEFAULT_VALUES[:top_readers][:top_readers_number])
     target_array = get_grouped_entities(@orders, &:reader)
 
-    get_max_allowed_slice(target_array, number)
+    get_max_allowed_slice(target_array, top_readers_number)
   end
 
-  def top_books(number = 1)
+  def top_books(top_books_number = DEFAULT_VALUES[:top_books][:top_books_number])
     target_array = get_grouped_entities(@orders, &:book)
 
-    get_max_allowed_slice(target_array, number)
+    get_max_allowed_slice(target_array, top_books_number)
   end
 
-  def top_readers_of_top_books(readers_number = 3, top_books_number = 3)
-    books = top_books(top_books_number)
+  def top_readers_of_top_books(
+    top_readers_quantity = DEFAULT_VALUES[:top_readers_of_top_books][:top_readers_quantity],
+    top_books_quantity = DEFAULT_VALUES[:top_readers_of_top_books][:top_books_quantity]
+  )
+    books = top_books(top_books_quantity)
     orders = @orders.filter { |order| books.include?(order.book) }
     target_array = get_grouped_entities(orders, &:reader)
 
-    get_max_allowed_slice(target_array, readers_number)
+    get_max_allowed_slice(target_array, top_readers_quantity)
   end
 
   def get_max_allowed_slice(target_array, requested_number)
