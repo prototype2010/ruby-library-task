@@ -4,10 +4,6 @@ require_relative './reader'
 require 'date'
 require 'time'
 
-# Book - required, must be an instance of Book class.
-# Reader must be an instance of Reader class
-# Date must be an instance of a Ruby Date class. The default date is today's date.
-
 class Order < Entity
   VALIDATION_RULES = {
     book: {
