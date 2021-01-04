@@ -16,7 +16,7 @@ end
 def pretty_method_name(method_name)
   "`#{method_name
           .to_s
-          .gsub('_', ' ')
+          .tr('_', ' ')
           .capitalize}`"
 end
 
