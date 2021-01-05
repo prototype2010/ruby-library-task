@@ -5,6 +5,7 @@ require_relative 'author'
 require_relative 'reader'
 require_relative '../statistics/statistics'
 require_relative '../lib_loader/lib_loader'
+require_relative '../exceptions/exceptions'
 
 class Library < Entity
   include Statistics
@@ -69,7 +70,7 @@ class Library < Entity
 
     return send(method_name, entity) if self.class.protected_method_defined? method_name
 
-    raise "This type of entity cannot be added to the library #{entity.class}"
+    raise UnprocessableEntityError "This type of entity cannot be added to the library #{entity.class}"
   end
 
   def to_json(*_args)

@@ -1,5 +1,6 @@
 require 'faker'
 require 'date'
+require_relative '../exceptions/exceptions'
 
 class FakeDataGenerator
   attr_reader :available_factories
@@ -16,7 +17,7 @@ class FakeDataGenerator
 
   def create(entity_symbol, **override_params)
     method_name = "fake_#{entity_symbol}"
-    raise "No available factory for entity #{entity_symbol}" unless respond_to? method_name
+    raise InitializeError "No available factory for entity #{entity_symbol}" unless respond_to? method_name
 
     send(method_name, override_params)
   end

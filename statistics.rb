@@ -3,13 +3,14 @@ require_relative './entities/library'
 require_relative './fake_data_generator/fake_data_generator'
 require_relative './fake_data_generator/config'
 require_relative './statistics/statistics'
+require_relative './exceptions/exceptions'
 
 def pretty_param_type(param_type)
   case param_type
   when :opt then '(Optional)'
   when :req then '(Required)'
   else
-    raise "Unknown param type #{param_type}"
+    raise InvalidParameterError "Unknown param type #{param_type}"
   end
 end
 
@@ -37,7 +38,7 @@ puts
 
 real_option_number = option_number - 1
 
-raise "No such option #{option_number}" unless available_methods[real_option_number]
+raise InvalidOptionError "No such option #{option_number}" unless available_methods[real_option_number]
 
 method_symbol = available_methods[real_option_number]
 chosen_method = lib.method(method_symbol)

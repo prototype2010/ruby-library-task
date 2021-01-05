@@ -1,3 +1,5 @@
+require_relative '../exceptions/exceptions'
+
 module Validator
   def validate(init_hash, validation_rules)
     validation_rules.each do |prop_name, _instance_info|
@@ -28,10 +30,10 @@ module Validator
   end
 
   def check_type(init_hash, prop_name, validation_rule)
-    expected_type = validation_rule[:type]
-    current_type = init_hash[prop_name]
+    expected = validation_rule[:type]
+    current = init_hash[prop_name]
 
-    raise "#{prop_name} is #{current_type.class}, but expected #{expected_type}" unless current_type.is_a? expected_type
+    raise ValidationError "#{prop_name} is #{current.class}, but expected #{expected}" unless current.is_a? expected
   end
 
   def validate_nested(init_hash, prop_name, validation_rule)
@@ -41,14 +43,14 @@ module Validator
     when Array
       validate_nested_array(init_hash, prop_name, validation_rule)
     else
-      raise 'Other nested validations not implemented yet'
+      raise NotImplementedYetError 'Other nested validations not implemented yet'
     end
   end
 
   def validate_nested_array(init_hash, prop_name, validation_rule)
-    required_type = validation_rule[:validate_nested][:type]
+    expected = validation_rule[:validate_nested][:type]
     array = init_hash[prop_name]
 
-    raise "Nested entities of #{array} should be #{required_type}" unless array.all? { |e| e.is_a? required_type }
+    raise ValidationError "Entities of #{array} should be #{required}" unless array.all? { |e| e.is_a? expected }
   end
 end

@@ -1,5 +1,6 @@
 require 'securerandom'
 require_relative '../../validator/validator'
+require_relative '../../exceptions/exceptions'
 
 class Entity
   include Validator
@@ -23,6 +24,6 @@ class Entity
   end
 
   def to_json(*_args)
-    raise 'Should be overridden by child class'
+    raise NotImplementedYetError 'Should be overridden by child class'
   end
 end
