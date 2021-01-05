@@ -1,6 +1,4 @@
 module Statistics
-  # used for interactive statistics query, required because of reflection limitation - there is no way to get
-  # default value of method parameter or call method with argument to make method use default value
   DEFAULT_VALUES = {
     top_readers: {
       top_readers_number: 1
