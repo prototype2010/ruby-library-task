@@ -1,9 +1,4 @@
-require_relative 'factories/factories'
-require_relative './entities/library'
-require_relative './fake_data_generator/fake_data_generator'
-require_relative './fake_data_generator/config'
-require_relative './statistics/statistics'
-require_relative './exceptions/exceptions'
+require_relative './preloader'
 
 def pretty_param_type(param_type)
   case param_type

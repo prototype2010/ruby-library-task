@@ -2,6 +2,7 @@ require 'securerandom'
 require 'date'
 require 'time'
 require 'json'
+require 'faker'
 
 require_relative './exceptions/exceptions'
 

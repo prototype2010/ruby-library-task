@@ -1,6 +1,4 @@
-require 'faker'
-require 'date'
-require_relative '../exceptions/exceptions'
+require_relative '../preloader'
 
 class FakeDataGenerator
   attr_reader :available_factories

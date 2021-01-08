@@ -1,4 +1,4 @@
-require_relative '../exceptions/exceptions'
+require_relative '../preloader'
 
 module Validator
   def validate(init_hash, validation_rules)

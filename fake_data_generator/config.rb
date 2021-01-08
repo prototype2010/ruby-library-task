@@ -1,4 +1,4 @@
-require_relative '../factories/factories'
+require_relative '../preloader'
 
 FACTORIES_CONFIG = {
   author: AUTHORS_FACTORY,

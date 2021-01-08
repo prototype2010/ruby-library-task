@@ -1,4 +1,4 @@
-require_relative './common_strategy'
+require_relative '../preloader'
 
 class FindExistingStrategy < CommonStrategy
   def create(class_constructor, params_hash)
