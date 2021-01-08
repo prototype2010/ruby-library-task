@@ -1,6 +1,4 @@
-require 'securerandom'
-require_relative '../../validator/validator'
-require_relative '../../exceptions/exceptions'
+require_relative '../../preloader'
 
 class Entity
   include Validator

@@ -1,6 +1,4 @@
-require 'json'
-require_relative '../dependency_resolver/dependency_resolver'
-require_relative '../dependency_resolver/config'
+require_relative '../preloader'
 
 module LibLoader
   DEFAULT_FILENAME = File.expand_path('./lib.json')

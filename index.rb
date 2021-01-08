@@ -1,7 +1,4 @@
-require_relative 'factories/factories'
-require_relative './entities/library'
-require_relative './fake_data_generator/fake_data_generator'
-require_relative './fake_data_generator/config'
+require_relative './preloader'
 
 lib = Library.new
 

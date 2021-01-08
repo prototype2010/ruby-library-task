@@ -1,3 +1,5 @@
+require_relative '../preloader'
+
 DEPENDENCY_RESOLVE_ORDER = [
   [:authors, AUTHORS_FACTORY],
   [:books, BOOKS_FACTORY],

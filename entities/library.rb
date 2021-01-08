@@ -1,11 +1,4 @@
-require_relative './common/entity'
-require_relative 'order'
-require_relative 'book'
-require_relative 'author'
-require_relative 'reader'
-require_relative '../statistics/statistics'
-require_relative '../lib_loader/lib_loader'
-require_relative '../exceptions/exceptions'
+require_relative '../preloader'
 
 class Library < Entity
   include Statistics

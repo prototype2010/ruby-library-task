@@ -1,5 +1,4 @@
-require_relative './common/entity'
-require_relative './author'
+require_relative '../preloader'
 
 class Book < Entity
   VALIDATION_RULES = {
