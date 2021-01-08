@@ -1,4 +1,4 @@
-require_relative './common/entity'
+require_relative '../preloader'
 
 class Reader < Entity
   VALIDATION_RULES = {

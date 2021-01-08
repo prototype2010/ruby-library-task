@@ -1,8 +1,4 @@
-require_relative './common/entity'
-require_relative './book'
-require_relative './reader'
-require 'date'
-require 'time'
+require_relative '../preloader'
 
 class Order < Entity
   VALIDATION_RULES = {
