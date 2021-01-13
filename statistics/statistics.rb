@@ -13,13 +13,11 @@ module Statistics
   }.freeze
 
   def top_readers(top_readers_number = DEFAULT_VALUES[:top_readers][:top_readers_number])
-    get_grouped_entities(@orders, &:reader)
-      .slice(0, top_readers_number)
+    get_grouped_entities(@orders, top_readers_number, &:reader)
   end
 
   def top_books(top_books_number = DEFAULT_VALUES[:top_books][:top_books_number])
-    get_grouped_entities(@orders, &:book)
-      .slice(0, top_books_number)
+    get_grouped_entities(@orders, top_books_number, &:book)
   end
 
   def top_readers_of_top_books(
@@ -28,15 +26,15 @@ module Statistics
   )
     books = top_books(top_books_quantity)
     orders = @orders.filter { |order| books.include?(order.book) }
-    get_grouped_entities(orders, &:reader)
-      .slice(0, top_readers_quantity)
+
+    get_grouped_entities(orders, top_readers_quantity, &:reader)
   end
 
-  def get_grouped_entities(from, &group_name)
+  def get_grouped_entities(from, number_of_items, &group_name)
     from.group_by(&group_name)
         .transform_values(&:length)
         .to_a
-        .sort_by { |a| -a[1] }
+        .max_by(number_of_items) { |a| a[1] }
         .map(&:first)
   end
 end
