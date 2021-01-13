@@ -44,7 +44,11 @@ class Order < Entity
     }
   end
 
-  def hash
-    super(:date, :id) + @book.hash + @reader.hash
+  def ==(other)
+    if other.is_a? Order
+      @reader = other.reader && (@book = other.book) && (@date == other.date)
+    else
+      false
+    end
   end
 end

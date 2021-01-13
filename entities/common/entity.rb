@@ -3,22 +3,20 @@ require_relative '../../preloader'
 class Entity
   include Validator
 
+  alias eql? ==
+
   attr_reader :id
 
   def initialize(id)
     @id = id.nil? ? SecureRandom.uuid : id
   end
 
-  def hash(*props_hashes)
-    props_hashes.inject(17) { |cumulative, prop| 37 * cumulative + send(prop).hash }
-  end
-
-  def eql?(other)
-    hash == other.hash
-  end
-
   def ==(other)
-    hash == other.hash
+    if other.is_a? Entity
+      @id == other.id
+    else
+      false
+    end
   end
 
   def to_json(*_args)

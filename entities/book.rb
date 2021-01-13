@@ -22,15 +22,19 @@ class Book < Entity
     super(init_hash[:id])
   end
 
-  def hash
-    super(:title) + @author.hash
-  end
-
   def to_json(*_args)
     {
       'id': @id,
       'author_id': @author.id,
       'title': @title
     }
+  end
+
+  def ==(other)
+    if other.is_a? Book
+      (@title == other.title) && (@author == other.author)
+    else
+      false
+    end
   end
 end

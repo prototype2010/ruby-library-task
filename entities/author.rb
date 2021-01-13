@@ -30,7 +30,11 @@ class Author < Entity
     }
   end
 
-  def hash
-    super :name, :biography
+  def ==(other)
+    if other.is_a? Author
+      (@name == other.name) && (@biography == other.biography)
+    else
+      false
+    end
   end
 end

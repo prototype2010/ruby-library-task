@@ -48,7 +48,11 @@ class Reader < Entity
     }
   end
 
-  def hash
-    super :email
+  def ==(other)
+    if other.is_a? Reader
+      (@name == other.name) && (@city == other.city) && (@house == other.house) && (@email == other.email)
+    else
+      false
+    end
   end
 end
