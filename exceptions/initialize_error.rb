@@ -1,0 +1,2 @@
+class InitializeError < StandardError
+end

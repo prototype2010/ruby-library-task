@@ -4,7 +4,12 @@ require 'time'
 require 'json'
 require 'faker'
 
-require_relative './exceptions/exceptions'
+require_relative './exceptions/initialize_error'
+require_relative './exceptions/not_implemented_yet_error'
+require_relative './exceptions/invalid_option_error'
+require_relative './exceptions/invalid_parameter_error'
+require_relative './exceptions/unprocessable_entity_error'
+require_relative './exceptions/validation_error'
 
 require_relative './lib_loader/lib_loader'
 require_relative './validator/validator'

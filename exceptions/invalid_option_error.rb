@@ -1,0 +1,2 @@
+class InvalidOptionError < StandardError
+end
