@@ -6,7 +6,7 @@ class DependencyResolver
       json_array = json_file_content[entities_key]
 
       library_init_params[entities_key] = resolve_array_deps(factory, json_array, factories_config)
-                                      .uniq
+                                          .uniq
     end
   end
 
