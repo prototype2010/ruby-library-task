@@ -54,18 +54,6 @@ class Library < Entity
     entity_or_array.is_a?(Array) ? add_array(entity_or_array) : add_one(entity_or_array)
   end
 
-  def add_array(entities_array)
-    entities_array.each { |entity| add_one(entity) }
-  end
-
-  def add_one(entity)
-    method_name = "add_#{entity.class.to_s.downcase}".to_sym
-
-    return send(method_name, entity) if self.class.protected_method_defined? method_name
-
-    raise UnprocessableEntityError "This type of entity cannot be added to the library #{entity.class}"
-  end
-
   def to_json(*_args)
     JSON.pretty_generate({
                            'authors': @authors.map(&:to_json),
@@ -75,7 +63,19 @@ class Library < Entity
                          })
   end
 
-  protected
+  private
+
+  def add_array(entities_array)
+    entities_array.each { |entity| add_one(entity) }
+  end
+
+  def add_one(entity)
+    method_name = "add_#{entity.class.to_s.downcase}".to_sym
+
+    return send(method_name, entity) if self.class.private_method_defined? method_name
+
+    raise UnprocessableEntityError "This type of entity cannot be added to the library #{entity.class}"
+  end
 
   def add_book(entity)
     @books.push(entity) unless @books.include? entity
@@ -90,7 +90,6 @@ class Library < Entity
     @orders.push entity
 
     add_book(entity.book)
-    add_author(entity.book.author)
     add_reader(entity.reader)
   end
 
