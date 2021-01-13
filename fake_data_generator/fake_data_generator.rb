@@ -1,13 +1,16 @@
 require_relative '../preloader'
 
 class FakeDataGenerator
+  CREATE_MANY_DEFAULT = 50
+  BIOGRAPHY_DEFAULT_LENGTH = 10
+
   attr_reader :available_factories
 
   def initialize(factories)
     @factories = factories
   end
 
-  def create_many(entity_symbol, number = 50)
+  def create_many(entity_symbol, number = CREATE_MANY_DEFAULT)
     (0..number)
       .to_a
       .map { create(entity_symbol) }
@@ -23,7 +26,7 @@ class FakeDataGenerator
   def fake_author(**override_params)
     fake_params = {
       name: Faker::Name.name,
-      biography: Faker::Alphanumeric.alphanumeric(number: 10)
+      biography: Faker::Alphanumeric.alphanumeric(number: BIOGRAPHY_DEFAULT_LENGTH)
     }
 
     @factories[:author].create(fake_params.merge(override_params))
